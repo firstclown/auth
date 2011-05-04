@@ -18,9 +18,13 @@ abstract class Kohana_Auth {
 	 *
 	 * @return Auth
 	 */
-	public static function instance()
+	public static function instance($instance=NULL)
 	{
-		if ( ! isset(Auth::$_instance))
+		if ( $instance )
+		{
+			Auth::$_instance = $instance;
+		}
+		else if ( ! isset(Auth::$_instance))
 		{
 			// Load the configuration for this type
 			$config = Kohana::config('auth');
